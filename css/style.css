@@ -1,0 +1,31 @@
+html, body, ul {
+  padding: 0;
+  margin: 0;
+  font-family: "Helvetica";
+}
+
+.tab-section {
+  margin: 50px 30px;
+  width: 50%;
+}
+
+.tabs li {
+  list-style: none;
+  background: lightslategrey;
+  color: white;
+  display: inline;
+  margin: 5px;
+  padding: 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  cursor: pointer;
+}
+
+.tabs li.active {
+  background: whitesmoke;
+  color: #999;
+}
+
+.tab-section p {
+  padding: 10px 5px;
+}
