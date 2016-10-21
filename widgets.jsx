@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Tabs from './tabs';
+import Weather from './weather';
 
 const panes = [
   {
@@ -21,6 +22,7 @@ const panes = [
 const Widgets = () => (
   <div>
     <Tabs panes={panes}/>
+    <Weather />
   </div>
 );
 

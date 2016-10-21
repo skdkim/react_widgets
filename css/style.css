@@ -4,7 +4,7 @@ html, body, ul {
   font-family: "Helvetica";
 }
 
-.tab-section {
+.tab-section, .weather-section {
   margin: 50px 30px;
   width: 50%;
 }
@@ -28,4 +28,21 @@ html, body, ul {
 
 .tab-section p {
   padding: 10px 5px;
+}
+
+.weather-content {
+  color: white;
+  padding: 40px;
+  background: lightblue;
+  border: 3px solid black;
+  background: url("https://2q72xc49mze8bkcog2f01nlh-wpengine.netdna-ssl.com/wp-content/uploads/2010/11/rainy.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.weather-content h2{
+  text-align: center;
+}
+
+.weather-content span {
+  font-weight: 400;
 }

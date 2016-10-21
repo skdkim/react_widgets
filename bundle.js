@@ -21437,6 +21437,10 @@
 	
 	var _tabs2 = _interopRequireDefault(_tabs);
 	
+	var _weather = __webpack_require__(174);
+	
+	var _weather2 = _interopRequireDefault(_weather);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var panes = [{
@@ -21454,7 +21458,8 @@
 	  return _react2.default.createElement(
 	    'div',
 	    null,
-	    _react2.default.createElement(_tabs2.default, { panes: panes })
+	    _react2.default.createElement(_tabs2.default, { panes: panes }),
+	    _react2.default.createElement(_weather2.default, null)
 	  );
 	};
 	
@@ -21551,6 +21556,109 @@
 	}(_react2.default.Component);
 	
 	exports.default = Tabs;
+
+/***/ },
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Weather = function (_React$Component) {
+	  _inherits(Weather, _React$Component);
+	
+	  function Weather() {
+	    _classCallCheck(this, Weather);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Weather).call(this));
+	
+	    _this.state = { city: "Loading...", temp: 0 };
+	    return _this;
+	  }
+	
+	  _createClass(Weather, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.getLocation();
+	    }
+	  }, {
+	    key: 'passLocation',
+	    value: function passLocation(coords) {
+	      var that = this;
+	      $.ajax({
+	        type: 'GET',
+	        url: 'http://api.openweathermap.org/data/2.5/weather?lat=' + coords.latitude + '&lon=' + coords.longitude + '&appid=bcb83c4b54aee8418983c2aff3073b3b',
+	        success: function success(data) {
+	          that.setState({ city: data.name, temp: that.k2f(data.main.temp) });
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'k2f',
+	    value: function k2f(temp) {
+	      return (temp * 9 / 5 - 459.67).toFixed(1);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'weather-section' },
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'Weather'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'weather-content' },
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            this.state.city,
+	            ' ',
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              this.state.temp,
+	              '°'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'getLocation',
+	    value: function getLocation() {
+	      var _this2 = this;
+	
+	      navigator.geolocation.getCurrentPosition(function (pos) {
+	        _this2.passLocation(pos.coords);
+	      });
+	    }
+	  }]);
+	
+	  return Weather;
+	}(_react2.default.Component);
+	
+	exports.default = Weather;
 
 /***/ }
 /******/ ]);
