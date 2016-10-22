@@ -21441,6 +21441,10 @@
 	
 	var _weather2 = _interopRequireDefault(_weather);
 	
+	var _autocomplete = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./autocomplete\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	
+	var _autocomplete2 = _interopRequireDefault(_autocomplete);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var panes = [{

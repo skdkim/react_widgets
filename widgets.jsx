@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Tabs from './tabs';
 import Weather from './weather';
+import Autocomplete from './autocomplete';
 
 const panes = [
   {
